@@ -1,0 +1,23 @@
+#!/bin/bash
+
+usage(){
+    echo "usage: $(basename $0) SLUG"
+    exit 1
+}
+
+if [ -z "$(which travis)" ]; then
+    echo 'travis cli missing: "gem install --no-rdoc --no-ri travis" ?'
+    exit 1
+fi
+
+slug=$1
+[ -z "$slug" ] && usage
+
+travis enable --repo $slug
+travis settings --repo $slug builds_only_with_travis_yml -s 0
+travis settings --repo $slug build_pushes                -s 0
+travis settings --repo $slug build_pull_requests         -s 1
+travis settings --repo $slug maximum_number_of_builds    -s 0
+travis settings --repo $slug auto_cancel_pull_requsts    -s 1
+travis settings --repo $slug auto_cancel_pushes          -s 1
+travis settings --repo $slug
