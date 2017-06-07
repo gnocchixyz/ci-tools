@@ -80,7 +80,9 @@ def main():
         protect(args, g_repo, args.branch)
     else:
         for g_branch in g_repo.get_branches():
-            protect(args, g_repo, g_branch.name)
+            if (g_branch.name == "master" or
+                    g_branch.name.startswith("stable/")):
+                protect(args, g_repo, g_branch.name)
 
 
 def protect(args, g_repo, branch):
