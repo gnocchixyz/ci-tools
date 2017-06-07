@@ -18,6 +18,12 @@ travis settings --repo $slug builds_only_with_travis_yml -s 0
 travis settings --repo $slug build_pushes                -s 0
 travis settings --repo $slug build_pull_requests         -s 1
 travis settings --repo $slug maximum_number_of_builds    -s 0
-travis settings --repo $slug auto_cancel_pull_requsts    -s 1
+
+# Not yet supported through API
+travis settings --repo $slug auto_cancel_pull_requests    -s 1
 travis settings --repo $slug auto_cancel_pushes          -s 1
+
 travis settings --repo $slug
+
+echo
+echo "You must set auto_cancel_pull_requests and auto_cancel_pushes to True manually"
