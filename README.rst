@@ -6,33 +6,36 @@ gnocchixyz-ci-tools
     :target: https://travis-ci.org/jd/git-pull-request
     :alt: Build Status
 
-gnocchixyz-ci-tools are tooling used by gnocchixyz CI to configur
-travis and github.
+gnocchixyz-ci-tools is a set of tools used by the gnocchixyz CI to configure
+Travis and GitHub.
 
-Github branches protections
+GitHub branches protections
 ---------------------------
 
-Github projects branches configuration can be done with::
+GitHub projects branches configuration can be done with::
 
   $ gnocchixyz-branches-config gnocchixyz/python-gnocchiclient
 
-It sets up master and stable/* branches permissions
+It sets up `master` and `stable/*` branches permissions so that they are
+protected and cannot be pushed directly and requires Travis-CI to be pass
+before merge anything.
 
-Or only one branch with::
+You can protect only one branch by passing the `--branch` option::
 
   gnocchixyz-branches-config gnocchixyz/python-gnocchiclient --branch stable/3.1
 
-When a new branch is created this script must be re-run to update the
-permissions to the new branch.
+When a new branch is created this script must be run again to set the right
+permissions for the new branch.
 
-Travis-ci docker image
+Travis CI docker image
 ----------------------
 
-The docker travis image is hosted here:
+The docker image used by Travis CI is hosted here:
 
 * https://hub.docker.com/r/gnocchixyz/ci-tools
 
-The image is automatically rebuild on each change to this repository by
+The image is automatically rebuilt on each change done on this repository by
 dockerhub itself.
 
-If needed a manually rebuild can be done via the dockerhub gnocchixyz account.
+If needed, a manual rebuild can be done by using the dockerhub gnocchixyz
+account.
