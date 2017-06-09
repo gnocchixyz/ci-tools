@@ -37,5 +37,8 @@ RUN pip install -U pip tox virtualenv
 RUN useradd -ms /bin/bash tester
 RUN mkdir $GNOCCHI_SRC
 RUN chown -R tester: $GNOCCHI_SRC
+
+RUN npm install s3rver --global
+
 USER tester
 WORKDIR $GNOCCHI_SRC
