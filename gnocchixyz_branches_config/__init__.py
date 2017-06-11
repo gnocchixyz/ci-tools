@@ -112,10 +112,10 @@ def protect(args, g_repo, branch):
     print("%s:" % branch)
     print("* protected: %s" % g_branch.protected)
     headers, data = g_repo._requester.requestJsonAndCheck(
-            "GET",
-            g_repo.url + "/branches/" + branch + '/protection',
-            headers={'Accept': 'application/vnd.github.loki-preview+json'}
-        )
+        "GET",
+        g_repo.url + "/branches/" + branch + '/protection',
+        headers={'Accept': 'application/vnd.github.loki-preview+json'}
+    )
     print("* required_pull_request_reviews:")
     print("  * dismiss_stale_reviews: %s" %
           data['required_pull_request_reviews']['dismiss_stale_reviews'])
