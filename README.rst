@@ -2,8 +2,8 @@
 gnocchixyz-ci-tools
 ===================
 
-.. image:: https://travis-ci.org/jd/git-pull-request.png?branch=master
-    :target: https://travis-ci.org/jd/git-pull-request
+.. image:: https://travis-ci.org/gnocchixyz/ci-tools.png?branch=master
+    :target: https://travis-ci.org/gnocchixyz/ci-tools
     :alt: Build Status
 
 gnocchixyz-ci-tools is a set of tools used by the gnocchixyz CI to configure
