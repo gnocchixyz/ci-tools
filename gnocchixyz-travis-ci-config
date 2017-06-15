@@ -26,4 +26,7 @@ travis settings --repo $slug auto_cancel_pushes          -s 1
 travis settings --repo $slug
 
 echo
-echo "You must set auto_cancel_pull_requests and auto_cancel_pushes to True manually"
+echo "You must set auto_cancel_pull_requests and auto_cancel_pushes to True manually:"
+echo
+echo "  https://travis-ci.org/${slug}/settings"
+echo
