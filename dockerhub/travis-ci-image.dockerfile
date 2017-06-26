@@ -24,8 +24,7 @@ RUN apt-get update -y && apt-get install -qy \
         librados-dev \
         liberasurecode-dev \
         ceph \
-        uwsgi \
-    && apt-get clean -y
+        uwsgi
 
 #NOTE(sileht): really no utf-8 in 2017 !?
 ENV LANG en_US.UTF-8
