@@ -26,8 +26,6 @@ RUN apt-get update -y && apt-get install -qy \
         librados-dev \
         liberasurecode-dev \
         ceph \
-        uwsgi \
-        uwsgi-plugin-python \
         && rm -rf /var/lib/apt/lists/*
 
 #NOTE(sileht): really no utf-8 in 2017 !?
