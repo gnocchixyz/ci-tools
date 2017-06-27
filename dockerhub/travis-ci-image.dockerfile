@@ -13,6 +13,8 @@ RUN apt-get update -y && apt-get install -qy \
         python3 \
         python-dev \
         python3-dev \
+# Needed for uwsgi core routing support
+        libpcre3-dev \
         python-pip \
         redis-server \
         build-essential \
