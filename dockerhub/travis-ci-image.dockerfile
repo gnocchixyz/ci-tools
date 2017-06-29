@@ -38,4 +38,8 @@ RUN pip install -U pip tox virtualenv
 
 RUN npm install s3rver --global
 
+RUN groupadd --gid 2000 tester
+RUN useradd --uid 2000 --gid 2000 --create-home --shell /bin/bash tester
+USER tester
+
 WORKDIR $GNOCCHI_SRC
