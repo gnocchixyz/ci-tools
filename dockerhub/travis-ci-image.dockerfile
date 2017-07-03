@@ -21,6 +21,7 @@ RUN apt-get update -y && apt-get install -qy \
         libffi-dev \
         libpq-dev \
         postgresql \
+        memcached \
         mysql-client \
         mysql-server \
         librados-dev \
