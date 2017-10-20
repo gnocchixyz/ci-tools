@@ -24,9 +24,13 @@ RUN apt-get update -y && apt-get install -qy \
         memcached \
         mysql-client \
         mysql-server \
+# For Ceph
         librados-dev \
         liberasurecode-dev \
         ceph \
+# For prometheus
+        libsnappy-dev \
+        libprotobuf-dev \
         && rm -rf /var/lib/apt/lists/*
 
 #NOTE(sileht): really no utf-8 in 2017 !?
