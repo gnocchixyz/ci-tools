@@ -86,8 +86,6 @@ def main():
 
 
 def protect(args, g_repo, branch):
-    g_repo.protect_branch(branch, enabled=True)
-
     # NOTE(sileht): Not yet part of the API
     # maybe soon https://github.com/PyGithub/PyGithub/pull/527
     g_repo._requester.requestJsonAndCheck(
@@ -106,7 +104,7 @@ def protect(args, g_repo, branch):
             'restrictions': None,
             'enforce_admins': True,
         },
-        headers={'Accept': 'application/vnd.github.loki-preview+json'}
+        headers={'Accept': 'application/vnd.github.v3+json'}
     )
     g_branch = g_repo.get_protected_branch(branch)
     print("%s:" % branch)
@@ -114,7 +112,7 @@ def protect(args, g_repo, branch):
     headers, data = g_repo._requester.requestJsonAndCheck(
         "GET",
         g_repo.url + "/branches/" + branch + '/protection',
-        headers={'Accept': 'application/vnd.github.loki-preview+json'}
+        headers={'Accept': 'application/vnd.github.v3+json'}
     )
     print("* required_pull_request_reviews:")
     print("  * dismiss_stale_reviews: %s" %
