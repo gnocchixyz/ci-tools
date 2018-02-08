@@ -28,6 +28,8 @@ RUN apt-get update -y && apt-get install -qy \
         librados-dev \
         liberasurecode-dev \
         ceph \
+# For Rocksdb
+        librocksdb-dev
 # For prometheus
         libsnappy-dev \
         libprotobuf-dev \
