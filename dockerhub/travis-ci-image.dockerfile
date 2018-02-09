@@ -16,7 +16,6 @@ RUN apt-get update -y && apt-get install -qy \
 # Needed for uwsgi core routing support
         libpcre3-dev \
         python-pip \
-        redis-server \
         build-essential \
         libffi-dev \
         libpq-dev \
@@ -30,7 +29,12 @@ RUN apt-get update -y && apt-get install -qy \
         ceph \
 # For prometheus
         libsnappy-dev \
-        libprotobuf-dev \
+        libprotobuf-dev
+
+# Install Redis from more recent version of Ubuntu to have >= 3.2 and not only 3.0
+RUN echo 'deb http://archive.ubuntu.com/ubuntu artful universe' > /etc/apt/sources.list
+RUN apt-get update -y && apt-get install -qy \
+        redis-server \
         && rm -rf /var/lib/apt/lists/*
 
 #NOTE(sileht): really no utf-8 in 2017 !?
