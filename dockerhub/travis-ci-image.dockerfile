@@ -26,6 +26,7 @@ RUN apt-get update -y && apt-get install -qy \
 # For Ceph
         librados-dev \
         liberasurecode-dev \
+        python-rados \
         ceph \
 # For prometheus
         libsnappy-dev \
