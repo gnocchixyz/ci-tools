@@ -2,7 +2,6 @@ FROM ubuntu:16.04
 ENV GNOCCHI_SRC /home/tester/src
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo 'deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu xenial main' >> /etc/apt/sources.list
 RUN apt-get update -y && apt-get install -qy \
         locales \
         git \
@@ -12,12 +11,8 @@ RUN apt-get update -y && apt-get install -qy \
         npm \
         python \
         python3 \
-        python3.5 \
-        python3.7 \
         python-dev \
         python3-dev \
-        python3.5-dev \
-        python3.7-dev \
 # Needed for uwsgi core routing support
         libpcre3-dev \
         python-pip \
