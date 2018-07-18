@@ -1,8 +1,7 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 ENV GNOCCHI_SRC /home/tester/src
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo 'deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu xenial main' >> /etc/apt/sources.list
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com F23C5A6CF475977595C89F51BA6932366A755776
 RUN apt-get update -y && apt-get install -qy \
         locales \
@@ -13,12 +12,11 @@ RUN apt-get update -y && apt-get install -qy \
         npm \
         python \
         python3 \
-        python3.5 \
         python3.7 \
         python-dev \
         python3-dev \
-        python3.5-dev \
         python3.7-dev \
+        redis-server \
 # Needed for uwsgi core routing support
         libpcre3-dev \
         python-pip \
@@ -36,12 +34,7 @@ RUN apt-get update -y && apt-get install -qy \
         ceph \
 # For prometheus
         libsnappy-dev \
-        libprotobuf-dev
-
-# Install Redis from more recent version of Ubuntu to have >= 3.2 and not only 3.0
-RUN echo 'deb http://archive.ubuntu.com/ubuntu artful universe' > /etc/apt/sources.list
-RUN apt-get update -y && apt-get install -qy \
-        redis-server \
+        libprotobuf-dev \
         && rm -rf /var/lib/apt/lists/*
 
 #NOTE(sileht): really no utf-8 in 2017 !?
