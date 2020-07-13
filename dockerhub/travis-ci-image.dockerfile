@@ -39,7 +39,7 @@ RUN apt-get update -y && apt-get install -qy \
         libprotobuf-dev
 
 # Install Redis from more recent version of Ubuntu to have >= 3.2 and not only 3.0
-RUN echo 'deb http://archive.ubuntu.com/ubuntu artful universe' > /etc/apt/sources.list
+RUN echo 'deb http://old-releases.ubuntu.com/ubuntu artful universe' > /etc/apt/sources.list
 RUN apt-get update -y && apt-get install -qy \
         redis-server \
         && rm -rf /var/lib/apt/lists/*
@@ -51,6 +51,7 @@ RUN locale-gen $LANG
 
 #NOTE(sileht): Upgrade python dev tools
 RUN pip install -U pip tox virtualenv
+RUN pip install zipp configparser
 
 RUN npm install s3rver@1.0.3 --global
 
