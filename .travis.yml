@@ -1,6 +1,6 @@
 sudo: required
 language: python
-python: 3.5
+python: 3.7
 
 services:
   - docker
@@ -17,6 +17,5 @@ script:
       - docker build --tag gnocchi-ci --file=dockerhub/travis-ci-image.dockerfile .
       - docker run -v ~/.cache/pip:/home/tester/.cache/pip -v $(pwd):/home/tester/src gnocchi-ci tox -epep8
 env:
-      - TOXENV=py27
-      - TOXENV=py35
+      - TOXENV=py37
       - TOXENV=pep8
