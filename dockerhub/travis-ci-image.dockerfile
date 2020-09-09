@@ -1,27 +1,24 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 ENV GNOCCHI_SRC /home/tester/src
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo 'deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu xenial main' >> /etc/apt/sources.list
+#NOTE(tobias-urdin): need gnupg for apt-key
+RUN apt-get update -y && apt-get install -qy gnupg
+RUN echo 'deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu bionic main' >> /etc/apt/sources.list
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com F23C5A6CF475977595C89F51BA6932366A755776
 RUN apt-get update -y && apt-get install -qy \
         locales \
         git \
         wget \
+        curl \
         nodejs \
-        nodejs-legacy \
         npm \
-        python \
         python3 \
-        python3.5 \
         python3.7 \
-        python-dev \
         python3-dev \
-        python3.5-dev \
         python3.7-dev \
+        python3-pip \
 # Needed for uwsgi core routing support
-        libpcre3-dev \
-        python-pip \
         build-essential \
         libffi-dev \
         libpq-dev \
@@ -32,15 +29,12 @@ RUN apt-get update -y && apt-get install -qy \
 # For Ceph
         librados-dev \
         liberasurecode-dev \
-        python-rados \
+        python3-rados \
         ceph \
 # For prometheus
         libsnappy-dev \
-        libprotobuf-dev
-
-# Install Redis from more recent version of Ubuntu to have >= 3.2 and not only 3.0
-RUN echo 'deb http://old-releases.ubuntu.com/ubuntu artful universe' > /etc/apt/sources.list
-RUN apt-get update -y && apt-get install -qy \
+        libprotobuf-dev \
+# For redis
         redis-server \
         && rm -rf /var/lib/apt/lists/*
 
@@ -50,8 +44,7 @@ RUN update-locale
 RUN locale-gen $LANG
 
 #NOTE(sileht): Upgrade python dev tools
-RUN pip install -U pip tox virtualenv
-RUN pip install zipp configparser
+RUN python3.7 -m pip install -U pip tox virtualenv
 
 RUN npm install s3rver@1.0.3 --global
 
