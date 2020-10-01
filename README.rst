@@ -2,7 +2,7 @@
 gnocchixyz-ci-tools
 ===================
 
-.. image:: https://travis-ci.org/gnocchixyz/ci-tools.png?branch=master
+.. image:: https://travis-ci.org/gnocchixyz/ci-tools.png?branch=stable/4.3
     :target: https://travis-ci.org/gnocchixyz/ci-tools
     :alt: Build Status
 
