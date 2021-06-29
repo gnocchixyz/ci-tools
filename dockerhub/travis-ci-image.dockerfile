@@ -15,8 +15,10 @@ RUN apt-get update -y && apt-get install -qy \
         npm \
         python3 \
         python3.7 \
+        python3.8 \
         python3-dev \
         python3.7-dev \
+        python3.8-dev \
         python3-pip \
 # Needed for uwsgi core routing support
         build-essential \
@@ -44,7 +46,7 @@ RUN update-locale
 RUN locale-gen $LANG
 
 #NOTE(sileht): Upgrade python dev tools
-RUN python3.7 -m pip install -U pip tox virtualenv
+RUN python3.6 -m pip install -U pip tox virtualenv
 
 RUN npm install s3rver@1.0.3 --global
 
