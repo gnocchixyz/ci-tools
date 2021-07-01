@@ -48,7 +48,7 @@ RUN locale-gen $LANG
 #NOTE(sileht): Upgrade python dev tools
 RUN python3.6 -m pip install -U pip tox virtualenv
 
-RUN npm install s3rver@1.0.3 --global
+RUN npm install s3rver@3.7.0 --global
 
 RUN groupadd --gid 2000 tester
 RUN useradd --uid 2000 --gid 2000 --create-home --shell /bin/bash tester
